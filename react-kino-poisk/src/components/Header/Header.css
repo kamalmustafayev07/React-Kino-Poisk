@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+
+.header-container{
+    font-family: "Ubuntu Sans", sans-serif;
+    display: flex;
+    height: 90px;
+    background: black;
+    padding:40px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-container__logo{
+    display: flex;
+    align-items: center;
+}
+
+.header-container__logo-image{
+   width: 200px;
+}
+
+.header-container__logo-text{
+    color:white;
+}
+
+nav ul{
+    display: flex;
+    gap:20px;
+}
+
+nav ul li a{
+    color:#969696;
+    text-decoration: none;
+    border: none;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+nav ul li a:hover{
+    color:white;
+}
+
+.header-container__sign-in{
+    border-radius: 5px;
+    padding:15px 20px;
+    color:white;
+    background: #10161D;
+    border:none;
+}
+
+.header-container__sign-in:hover{
+    background: #3b3b3b;
+}
