@@ -1,13 +1,11 @@
 import './App.css'
-import Main from './pages/MainPage/Main'
+import MainPage from './pages/MainPage/MainPage'
 
 function App() {
-
-
   return (
     <>
     <div className="app-container">
-      <Main/>
+      <MainPage/>
     </div>
     </>
   )

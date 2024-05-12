@@ -4,22 +4,20 @@ import "../Header/Header.css"
 export default function Header(){
     return(
         <>
-        <header class='header-container'>
+        <header className='header-container'>
             <div className="header-container__logo">
-                <img className="header-container__logo-image"src="JustWatch-logo-large.webp" alt="justwatch-logo"/>
+                <a href="#">
+                    <img className="header-container__logo-image"src="JustWatch-logo-large.webp" alt="justwatch-logo"/>
+                </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">New</a></li>
-                    <li><a href="#">Popular</a></li>
-                    <li><a href="#">Lists</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Guide</a></li>
-                </ul>
-            </nav>
             <SearchBar/>
-            <button className="header-container__sign-in">Sign in</button>
+            <div className="header-container__buttons">
+                <button className="header-container__buttons-favorites">
+                    Favorites 
+                    <span className="header-container-buttons-favorites_count">1</span>
+                    </button>
+                <button className="header-container__buttons-sign-in">Sign in</button>
+            </div>       
         </header>
         </>
     )

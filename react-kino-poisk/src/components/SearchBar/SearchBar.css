@@ -18,7 +18,9 @@
  }
 
 input{
-    padding:10px 100px;
+    padding:10px 30px;
+    padding-left: 80px;
+    min-width: 400px;
     background: #10161D;
     border: none;
     outline: none;
@@ -35,6 +37,7 @@ input{
     color:white;
     border-radius: 10px;
     padding:10px;
+    right: 0;
 }
 
 .search-button:hover{
