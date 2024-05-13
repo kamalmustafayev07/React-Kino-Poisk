@@ -7,7 +7,7 @@ export const fetchContent=createAsyncThunk(
     async(urlValue)=>{
         const res=await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&${urlValue}`);
         const data=await res.json();
-        return data;
+        return data.Search;
     }
 )
 
@@ -92,7 +92,18 @@ const moviesSlice=createSlice({
     name:'movies',
     reducers:{
         addToList:(state,action) =>{
-            return {...state,favorites:[...state.favorites,action.payload]}
+            let indexOfElement=state.favorites.findIndex(item=>item.imdbID===action.payload.imdbID);
+            if(indexOfElement)
+            { 
+              return {...state,favorites:[...state.favorites,action.payload]}
+            }else{
+              return {...state,favorites:[...state.favorites]}
+            }
+           
+        },
+        deleteFromList:(state,action)=>{
+            let indexOfElement=state.favorites.findIndex(item=>item.imdbID===action.payload.imdbID);
+            return {...state,favorites:[...state.favorites.toSpliced(indexOfElement,1)]}
         },
 
     },
@@ -114,6 +125,6 @@ const moviesSlice=createSlice({
 
 
 export const {addToList} = moviesSlice.actions;
-export const {searchMovie} = moviesSlice.actions;
+export const {deleteFromList} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

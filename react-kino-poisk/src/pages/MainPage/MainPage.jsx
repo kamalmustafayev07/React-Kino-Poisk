@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header"
 import Movies from "../../components/Movies/Movies"
-import Favorites from "../../components/Favorites/Favorites"
+import { Route,Routes } from 'react-router-dom';
+import ListPage from "../ListPage/ListPage";
 import "../MainPage/MainPage.css"
 
 export default function MainPage(){
@@ -8,8 +9,12 @@ export default function MainPage(){
         <>
         <Header/>
         <main className="main-container">
-            <Movies/>
+            <Routes element={<Header/>}>
+                <Route path="/" element={<Movies/>}/>
+                <Route path="/favorites" element={<ListPage/>}/>
+            </Routes>
         </main>
+        
         </>
     )
 }

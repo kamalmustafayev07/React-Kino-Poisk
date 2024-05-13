@@ -1,37 +1,44 @@
-import { useState } from 'react'
+import { useState} from 'react'
+import { useDispatch } from "react-redux";
 import '../MoviesItem/MoviesItem.css'
+import { addToList,deleteFromList } from '../../store/reducer';
 
 export default function MoviesItem(props){
     let [notClicked,setNotClicked]=useState(true);
-    let [clickedIcon,setClickedIcon]=useState('../../../icons/icons8-plus.svg');
+    let [clickedIcon,setClickedIcon]=(useState('../../../icons/icons8-plus.svg'))
+    let dispatch=useDispatch();
 
     function handleClick(){
         if(notClicked){
             setClickedIcon('../../../icons/icons8-checkmark.svg');
+            dispatch(addToList({
+                Title:props.Title,
+                Year:props.Year,
+                imdbID:props.imdbID,
+                Type:props.Type,
+                Poster:props.Poster,
+            }));
         }
         else{
+            dispatch(deleteFromList({
+                imdbID:props.imdbID
+            }))
             setClickedIcon('../../../icons/icons8-plus.svg');
         }
-        setNotClicked(notClicked=>!notClicked);
+        setNotClicked(!notClicked);
     }
 
     return(
     <>
-    <div className="movies-item">
-        <div className="movies-item__poster">
-            <img className="movies-item__poster-icon" src={`${clickedIcon}`} alt="clic-icon"/>
-            <img className="movies-item__poster-image" src={`${props.Poster}`} alt="movie-poster"/>
+        <div className="movies__item-poster">
+            <img onClick={handleClick} className="movies__item-poster__icon" src={`${clickedIcon}`} alt="clic-icon"/>
+            <img className="movies__item-poster__image" src={`${props.Poster}`} alt="movie-poster"/>
         </div>
-        <div onClick={handleClick}
-        className='movies-item__info'>
-            <h3 className="movies-item__title">{props.Title} ({props.Year})</h3>
-            <div className='movie-item__add-button'>
-                <img className="movie-item__add-button-icon" src={`${clickedIcon}`} alt="click-icon"/>
-                Add to favorites
-            </div>
-
+        <h3 className="movies__item-title">{props.Title} ({props.Year})</h3>
+        <div onClick={handleClick} className='movie__item-add-button'>
+            <img className="movie__item-add-button__icon" src={`${clickedIcon}`} alt="click-icon"/>
+            Add to favorites
         </div>
-    </div>
     </>
     )
 }

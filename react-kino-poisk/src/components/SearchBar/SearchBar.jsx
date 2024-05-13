@@ -16,16 +16,23 @@ export default function SearchBar(){
     useEffect(()=>{
         if(request)
         {
-            dispatch(fetchContent({urlValue:`s=${input}`}))
+            dispatch(fetchContent(`s=${input}`));
+            setRequest(!request);
         }
-    },[request]);
+    });
 
     return(
         <>
         <div className="search-bar-container">
             <input onChange={handleInputChange} type="text" name='searchInput' placeholder="Search for movies or TV shows"/>
             <button onClick={()=>{
+                if(input.length!==0)
                 setRequest(!request);
+                else{
+                    return;
+                }
+                localStorage.setItem('active',true)
+
             }} className="search-button">Search</button>
         </div>
         </>
