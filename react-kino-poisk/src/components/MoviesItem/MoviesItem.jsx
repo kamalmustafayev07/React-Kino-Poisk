@@ -1,12 +1,24 @@
-import { useState} from 'react'
-import { useDispatch } from "react-redux";
+import { useState,useEffect} from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import '../MoviesItem/MoviesItem.css'
 import { addToList,deleteFromList } from '../../store/reducer';
 
 export default function MoviesItem(props){
     let [notClicked,setNotClicked]=useState(true);
-    let [clickedIcon,setClickedIcon]=(useState('../../../icons/icons8-plus.svg'))
+    let [clickedIcon,setClickedIcon]=(useState('../../../icons/icons8-plus.svg'));
     let dispatch=useDispatch();
+    let favorites=useSelector((state)=>state.movies.favorites);
+
+    useEffect(()=>{
+        if((favorites.findIndex(item=>item.imdbID===props.imdbID))>=0)
+        {
+            setNotClicked(false);
+            setClickedIcon('../../../icons/icons8-checkmark.svg');
+        }
+        else{
+            return;
+        }
+    },[favorites]);
 
     function handleClick(){
         if(notClicked){
@@ -32,7 +44,7 @@ export default function MoviesItem(props){
     <>
         <div className="movies__item-poster">
             <img onClick={handleClick} className="movies__item-poster__icon" src={`${clickedIcon}`} alt="clic-icon"/>
-            <img className="movies__item-poster__image" src={`${props.Poster}`} alt="movie-poster"/>
+            <img className="movies__item-poster__image" src={props.Poster!=='N/A' ? `${props.Poster}` : `default-movie.png`} alt="movie-poster"/>
         </div>
         <h3 className="movies__item-title">{props.Title} ({props.Year})</h3>
         <div onClick={handleClick} className='movie__item-add-button'>

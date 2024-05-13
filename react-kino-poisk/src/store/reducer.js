@@ -7,7 +7,7 @@ export const fetchContent=createAsyncThunk(
     async(urlValue)=>{
         const res=await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&${urlValue}`);
         const data=await res.json();
-        return data.Search;
+        return data;
     }
 )
 
@@ -87,7 +87,8 @@ const moviesSlice=createSlice({
         ],
         favorites:[],
         isLoading:null,
-        error:false
+        error:false,
+        searchError:false,
     },
     name:'movies',
     reducers:{
@@ -112,13 +113,17 @@ const moviesSlice=createSlice({
           state.isLoading = true
         })
         builder.addCase(fetchContent.fulfilled, (state, action) => {
-          console.log(action.payload);
-          state.movies=action.payload;
+          if(action.payload.Response==='True'){
+            state.movies=action.payload.Search;
+            state.searchError=false;
+          }else{ 
+              state.searchError=true;
+            };
           state.isLoading = false
         })
         builder.addCase(fetchContent.rejected, (state) => {
           state.isLoading = false
-          state.error = true
+          state.error = true;
         })
       },
 })

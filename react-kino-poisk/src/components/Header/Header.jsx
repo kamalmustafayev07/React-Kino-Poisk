@@ -16,9 +16,9 @@ export default function Header(){
         <>
         <header className='header-container'>
             <div className="header-container__logo">
-                <a href="#">
-                    <img className="header-container__logo-image"src="JustWatch-logo-large.webp" alt="justwatch-logo"/>
-                </a>
+                <Link to="/">
+                <img className="header-container__logo-image"src="JustWatch-logo-large.webp" alt="justwatch-logo"/>
+                </Link>
             </div>
             <SearchBar/>
             <div className="header-container__buttons">

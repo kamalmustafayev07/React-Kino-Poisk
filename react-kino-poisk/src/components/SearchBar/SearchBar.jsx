@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import "../SearchBar/SearchBar.css"
 import { useEffect, useState } from "react";
 import { fetchContent } from "../../store/reducer";
+import {Link} from 'react-router-dom';
 
 export default function SearchBar(){
     let [input,setInput]=useState('');
@@ -19,7 +20,7 @@ export default function SearchBar(){
             dispatch(fetchContent(`s=${input}`));
             setRequest(!request);
         }
-    });
+    },[request]);
 
     return(
         <>
@@ -31,8 +32,6 @@ export default function SearchBar(){
                 else{
                     return;
                 }
-                localStorage.setItem('active',true)
-
             }} className="search-button">Search</button>
         </div>
         </>

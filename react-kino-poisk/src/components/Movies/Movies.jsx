@@ -7,35 +7,26 @@ function Movies() {
   let movies = useSelector((state) => state.movies.movies);
   let isLoading = useSelector((state) => state.movies.isLoading);
   let error = useSelector((state) => state.movies.error);
-  let [array, setArray] = useState([]);
-  let savedMovies = movies.map((item) => {
-    return { ...item, added: false };
-  });
-
-  useEffect(() => {
-    if (localStorage.getItem("active") === 'true') {
-      localStorage.setItem("movies", JSON.stringify(savedMovies));
-      console.log('serach')
-    }
-    
-    let arr = JSON.parse(localStorage.getItem("movies"));
-    setArray(arr);
-  }, [movies]);
-
+  let searchError=useSelector((state)=>state.movies.searchError);
+  
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <h1 className="loading-header">Loading...</h1>;
   }
 
   if (error) {
-    return <h1>Error!</h1>;
+    return <h1 className="error-header">Something went wrong...please retry!</h1>;
+  }
+
+  if(searchError)
+  {
+      return <h1 className="search-error-header">Found nothing.Please try again!</h1>
   }
 
   return (
     <>
       <div className="movies-container">
         <ul className="movies">
-          {array.length &&
-            array.map((movie) => {
+          {Array.isArray(movies) && movies.map((movie) => {
               return (
                 <li className="movies__item" key={movie.imdbID}>
                   <MoviesItem {...movie} />

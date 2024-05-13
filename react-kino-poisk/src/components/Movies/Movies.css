@@ -5,3 +5,7 @@
     flex-wrap: wrap;
     gap:40px;
 }
+
+.error-header,.loading-header,.search-error-header{
+    color:white;
+}

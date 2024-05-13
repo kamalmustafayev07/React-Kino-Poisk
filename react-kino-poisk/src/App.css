@@ -7,6 +7,8 @@
     font-family: "Ubuntu Sans", sans-serif;
 }
 
-.app-container{
-    background: #1C232B;
+.main-container{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
 }

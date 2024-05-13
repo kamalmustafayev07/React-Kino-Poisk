@@ -19,8 +19,8 @@
     padding:10px;
 }
 .movies__item-poster__image{
-    width: 300px;
-    height: 446px;
+    max-width: 300px;
+    min-height: 446px;
     margin-bottom: -2px;
 }
 
