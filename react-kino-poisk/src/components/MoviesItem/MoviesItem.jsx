@@ -5,7 +5,7 @@ import { addToList,deleteFromList } from '../../store/reducer';
 
 export default function MoviesItem(props){
     let [notClicked,setNotClicked]=useState(false);
-    let [clickedIcon,setClickedIcon]=(useState('../../../icons/icons8-plus.svg'));
+    let [clickedIcon,setClickedIcon]=(useState('icons8-plus.svg'));
     let dispatch=useDispatch();
     let favorites=useSelector((state)=>state.movies.favorites);
     let notClickedFavorites=useSelector(state=>state.movies.notClickedFavorites);
@@ -14,17 +14,17 @@ export default function MoviesItem(props){
         if((favorites.findIndex(item=>item.imdbID===props.imdbID))>=0)
         {
             setNotClicked(false);
-            setClickedIcon('../../../icons/icons8-checkmark.svg');
+            setClickedIcon('icons8-checkmark.svg');
         }
         else{
             setNotClicked(true);
-            setClickedIcon('../../../icons/icons8-plus.svg');
+            setClickedIcon('icons8-plus.svg');
         }
     },[favorites]);
 
     function handleClick(){
         if(notClicked){
-                setClickedIcon('../../../icons/icons8-checkmark.svg');
+                setClickedIcon('icons8-checkmark.svg');
                 dispatch(addToList({
                     Title:props.Title,
                     Year:props.Year,
@@ -36,7 +36,7 @@ export default function MoviesItem(props){
                     dispatch(deleteFromList({
                         imdbID:props.imdbID
                     }))
-                    setClickedIcon('../../../icons/icons8-plus.svg');
+                    setClickedIcon('icons8-plus.svg');
                 }   
         setNotClicked(!notClicked);
     }
