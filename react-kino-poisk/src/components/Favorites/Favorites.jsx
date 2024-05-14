@@ -10,8 +10,7 @@ export default function Favorites(){
     let dispatch=useDispatch();
     let [buttonText,setButtonText]=useState('Save List');
     let favorites=useSelector(state=>state.movies.favorites);
-    let id = '';
-
+    let [id,setId]=useState('');
 
     useEffect(()=>{
         if(notClickedFavorites===true)
@@ -42,8 +41,7 @@ export default function Favorites(){
             }
             });
             const json = await response.json();
-            id=json.id;
-            console.log('Успех:', JSON.stringify(json));
+            setId(json.id);
         } catch (error) {
         console.error('Ошибка:', error);
         }
@@ -82,7 +80,7 @@ export default function Favorites(){
                 <button onClick={()=>{
                     dispatch(notClickedChange());
                     }} className="list-page__button">{buttonText}</button>
-                {!notClickedFavorites && <Link className='link-page__movies-watch-button'>Watch now</Link>}
+                {!notClickedFavorites && <Link to={`/list/${id}`} className='link-page__movies-watch-button'>Watch now</Link>}
                 </>
                 }                
                 </div>

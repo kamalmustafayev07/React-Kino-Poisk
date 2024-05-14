@@ -8,6 +8,8 @@ export default function Header(){
     let favoritesLength=useSelector(state=>state.movies.favorites.length);
     let [count,setCount]=useState(0);
 
+    
+
     useEffect(()=>{
         setCount(favoritesLength);
     },[favoritesLength]);
@@ -16,21 +18,12 @@ export default function Header(){
         <>
         <header className='header-container'>
             <div className="header-container__logo">
-                <Link to="/">
-                <img className="header-container__logo-image"src="JustWatch-logo-large.webp" alt="justwatch-logo"/>
+                <Link className="header-container__logo-text" to="/">
+                    <div>Kino<span>Move</span></div>
                 </Link>
             </div>
             <SearchBar/>
-            <div className="header-container__buttons">
-                <Link to="/favorites">
-                <button className="header-container__buttons-favorites">
-                    Favorites 
-                    <span className="header-container-buttons-favorites_count">{count}</span>
-                </button>
-                </Link>
-                
-                <button className="header-container__buttons-sign-in">Sign in</button>
-            </div>       
+            <button className="header-container__buttons-sign-in">Sign in</button>     
         </header>
         </>
     )

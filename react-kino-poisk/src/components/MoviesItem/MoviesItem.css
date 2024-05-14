@@ -19,9 +19,8 @@
     padding:10px;
 }
 .movies__item-poster__image{
-    max-width: 300px;
-    min-height: 446px;
-    margin-bottom: -2px;
+    width: 300px;
+    height: 446px;
 }
 
 .movies__item-title{
@@ -53,4 +52,11 @@
 }
 .movie__item-add-button:hover{
     background: rgb(255, 246, 120);
+}
+
+@media screen and (max-width:700px) {
+    .movies__item-poster__image{
+        width: 150px;
+        height: 226px;
+    }
 }

@@ -41,6 +41,8 @@ export default function MoviesItem(props){
         setNotClicked(!notClicked);
     }
 
+   
+
     return(
     <>
         <div className="movies__item-poster">
