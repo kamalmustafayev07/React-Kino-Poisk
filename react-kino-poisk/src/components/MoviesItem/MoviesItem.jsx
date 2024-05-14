@@ -4,10 +4,11 @@ import '../MoviesItem/MoviesItem.css'
 import { addToList,deleteFromList } from '../../store/reducer';
 
 export default function MoviesItem(props){
-    let [notClicked,setNotClicked]=useState(true);
+    let [notClicked,setNotClicked]=useState(false);
     let [clickedIcon,setClickedIcon]=(useState('../../../icons/icons8-plus.svg'));
     let dispatch=useDispatch();
     let favorites=useSelector((state)=>state.movies.favorites);
+    let notClickedFavorites=useSelector(state=>state.movies.notClickedFavorites);
 
     useEffect(()=>{
         if((favorites.findIndex(item=>item.imdbID===props.imdbID))>=0)
@@ -16,27 +17,27 @@ export default function MoviesItem(props){
             setClickedIcon('../../../icons/icons8-checkmark.svg');
         }
         else{
-            return;
+            setNotClicked(true);
+            setClickedIcon('../../../icons/icons8-plus.svg');
         }
     },[favorites]);
 
     function handleClick(){
         if(notClicked){
-            setClickedIcon('../../../icons/icons8-checkmark.svg');
-            dispatch(addToList({
-                Title:props.Title,
-                Year:props.Year,
-                imdbID:props.imdbID,
-                Type:props.Type,
-                Poster:props.Poster,
-            }));
-        }
-        else{
-            dispatch(deleteFromList({
-                imdbID:props.imdbID
-            }))
-            setClickedIcon('../../../icons/icons8-plus.svg');
-        }
+                setClickedIcon('../../../icons/icons8-checkmark.svg');
+                dispatch(addToList({
+                    Title:props.Title,
+                    Year:props.Year,
+                    imdbID:props.imdbID,
+                    Type:props.Type,
+                    Poster:props.Poster,
+                }));      
+        }else{
+                    dispatch(deleteFromList({
+                        imdbID:props.imdbID
+                    }))
+                    setClickedIcon('../../../icons/icons8-plus.svg');
+                }   
         setNotClicked(!notClicked);
     }
 
@@ -47,10 +48,10 @@ export default function MoviesItem(props){
             <img className="movies__item-poster__image" src={props.Poster!=='N/A' ? `${props.Poster}` : `default-movie.png`} alt="movie-poster"/>
         </div>
         <h3 className="movies__item-title">{props.Title} ({props.Year})</h3>
-        <div onClick={handleClick} className='movie__item-add-button'>
+        <button disabled={!notClickedFavorites} onClick={handleClick} className='movie__item-add-button'>
             <img className="movie__item-add-button__icon" src={`${clickedIcon}`} alt="click-icon"/>
             Add to favorites
-        </div>
+        </button>
     </>
     )
 }

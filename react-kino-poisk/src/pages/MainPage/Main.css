@@ -1,0 +1,6 @@
+.main-container{
+    display: flex;
+    padding:20px 100px;
+    justify-content: space-around;
+    gap:30px;
+}

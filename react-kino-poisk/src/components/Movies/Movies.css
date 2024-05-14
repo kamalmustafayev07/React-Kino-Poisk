@@ -1,6 +1,5 @@
 .movies{
     display: flex;
-    justify-content: center;
     list-style: none;
     flex-wrap: wrap;
     gap:40px;

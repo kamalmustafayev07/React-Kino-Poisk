@@ -1,23 +1,27 @@
 .list-page__container{
-    height: 100vh;
+    background: #313131;
+    height: min-content;
+    border-radius: 20px;
+    padding:40px;
+}   
+
+.list-page__header{
+    color:white;
 }
 
 .list-page__movies-container{
-    background: #313131;
-    min-width: 940px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap:50px;
-    padding:50px;
-    border-radius: 20px;
+    gap:30px;
     font-family: "Ubuntu Sans", sans-serif;
 }
 .list-page__movies{
-    display: flex;
-    flex-wrap: wrap;
-    gap:10px;
+    display: grid;
+    grid-template-columns:  auto auto;
+    column-gap: 25px;
+    row-gap: 60px;
 }
 
 .list-page__button{
@@ -42,8 +46,8 @@
 }
 
 .movies-item__poster{
-    width: 150px;
-    height: 223px;
+    width: 75px;
+    height: 111.5px;
     margin-bottom: -2px;
 }
 
@@ -53,7 +57,7 @@
 
 .movies-item__title{
     color:white;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 20px;
     font-weight: 700;
     padding-top: 5px;
@@ -71,4 +75,20 @@
 
 .movies-item__delete-button:hover{
     background: rgb(255, 67, 67);
+}
+
+.link-page__movies-watch-button{
+    text-decoration: none;
+    color:white;
+    width: 135px;
+    text-align: center;
+    padding:10px 40px;
+    background:rgb(0, 119, 255);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.link-page__movies-watch-button:hover{
+    background: rgb(84, 164, 255);
 }

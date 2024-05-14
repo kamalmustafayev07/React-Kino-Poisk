@@ -86,6 +86,7 @@ const moviesSlice=createSlice({
           },
         ],
         favorites:[],
+        notClickedFavorites:true,
         isLoading:null,
         error:false,
         searchError:false,
@@ -93,20 +94,15 @@ const moviesSlice=createSlice({
     name:'movies',
     reducers:{
         addToList:(state,action) =>{
-            let indexOfElement=state.favorites.findIndex(item=>item.imdbID===action.payload.imdbID);
-            if(indexOfElement)
-            { 
-              return {...state,favorites:[...state.favorites,action.payload]}
-            }else{
-              return {...state,favorites:[...state.favorites]}
-            }
-           
+            return {...state,favorites:[...state.favorites,action.payload]}  
         },
         deleteFromList:(state,action)=>{
             let indexOfElement=state.favorites.findIndex(item=>item.imdbID===action.payload.imdbID);
             return {...state,favorites:[...state.favorites.toSpliced(indexOfElement,1)]}
         },
-
+        notClickedChange:(state,action)=>{
+           return {...state,notClickedFavorites:!state.notClickedFavorites};
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchContent.pending, (state) => {
@@ -131,5 +127,6 @@ const moviesSlice=createSlice({
 
 export const {addToList} = moviesSlice.actions;
 export const {deleteFromList} = moviesSlice.actions;
+export const {notClickedChange}= moviesSlice.actions;
 
 export default moviesSlice.reducer;

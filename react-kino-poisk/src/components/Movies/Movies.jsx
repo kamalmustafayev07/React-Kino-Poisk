@@ -8,7 +8,7 @@ function Movies() {
   let isLoading = useSelector((state) => state.movies.isLoading);
   let error = useSelector((state) => state.movies.error);
   let searchError=useSelector((state)=>state.movies.searchError);
-  
+
   if (isLoading) {
     return <h1 className="loading-header">Loading...</h1>;
   }
