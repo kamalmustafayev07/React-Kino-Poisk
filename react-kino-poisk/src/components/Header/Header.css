@@ -8,22 +8,17 @@
     justify-content: space-around;
 }
 
-.header-container__logo{
-    display: flex;
-    align-items: center;
-}
-
-.header-container__logo-text{
+.header__logo-text{
    color:white;
    text-decoration: none;
    font-size: 40px;
 }
 
-.header-container__logo-text div span{
+.header__logo-text div span{
     color:rgb(255, 238, 0);
 }
 
-.header-container__buttons-sign-in{
+.header__buttons-sign-in{
     border-radius: 5px;
     padding:13px 20px;
     color:white;
@@ -32,26 +27,26 @@
     text-align: center;
 }
 
-.header-container__buttons-sign-in:hover{
+.header__buttons-sign-in:hover{
     background: #3b3b3b;
 }
 
 
 @media screen and (max-width:990px) {
-    .header-container__buttons-sign-in{
+    .header__buttons-sign-in{
         display:none;
     }
 }
 
 @media  screen and (max-width:700px) {
-    .header-container__logo-text{
+    .header__logo-text{
         font-size: 20px;
     }
 
 }
 
 @media  screen and (max-width:350px) {
-    .header-container__logo-text{
+    .header__logo-text{
         font-size: 15px;
     }
 }

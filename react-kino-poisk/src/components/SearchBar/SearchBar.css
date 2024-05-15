@@ -19,7 +19,7 @@
     color:white;
 }
 
-.search-button{
+.search-bar__button{
     position: absolute;
     z-index: 2;
     border: none;
@@ -30,7 +30,7 @@
     right: 0;
 }
 
-.search-button:hover{
+.search-bar__button:hover{
     background: #333333;
 }
 
@@ -47,7 +47,7 @@
 }
 
 @media screen and (max-width:700px) {
-    .search-button{
+    .search-bar__button{
         display: none;
     }
 

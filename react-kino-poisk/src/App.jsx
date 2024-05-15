@@ -7,13 +7,11 @@ import Main from './pages/MainPage/Main';
 function App() {
   return (
     <>
-    <div className="app-container">
       <Header/>
       <Routes element={<Header/>}>
         <Route path="/" element={<Main/>}/>
         <Route path="/list/:id" element={<ListPage/>}/>
       </Routes>
-    </div>
     </>
   )
 }

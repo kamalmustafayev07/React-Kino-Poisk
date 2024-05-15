@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import MoviesItem from "../MoviesItem/MoviesItem";
 import "../Movies/Movies.css";
-import React, { useEffect, useState } from "react";
 
 function Movies() {
   let movies = useSelector((state) => state.movies.movies);
@@ -39,4 +38,4 @@ function Movies() {
   );
 }
 
-export default React.memo(Movies);
+export default Movies;

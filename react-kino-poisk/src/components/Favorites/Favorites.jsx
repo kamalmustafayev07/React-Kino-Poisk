@@ -56,15 +56,15 @@ export default function Favorites(){
    
     return(
         <>
-         <div className="list-page__container">
-                <div className="list-page__movies-container">
-                <h1 className="list-page__header">Favorites</h1>
-                {favorites.length === 0 ? <h1 className="list-page__empty">List is empty</h1> :
+         <div className="favorites-container">
+                <div className="favorites__movies-container">
+                <h1 className="favorites__header">Favorites</h1>
+                {favorites.length === 0 ? <h1 className="favorites__empty-text">List is empty</h1> :
                 <>
-                <ul className="list-page__movies">
+                <ul className="favorites__movies">
                    {favorites.map((movie)=>{
                         return(
-                            <li className="list-page__movies-item" key={movie.imdbID}>
+                            <li className="favorites__movies-item" key={movie.imdbID}>
                                 <img className="movies-item__poster" src={movie.Poster!='N/A' ? `${movie.Poster}` : `default-movie.png`} alt="poster"/>
                                 <h3 className="movies-item__title">{movie.Title} ({movie.Year})</h3>
                                 {notClickedFavorites &&
@@ -79,8 +79,8 @@ export default function Favorites(){
                 </ul>
                 <button onClick={()=>{
                     dispatch(notClickedChange());
-                    }} className="list-page__button">{buttonText}</button>
-                {!notClickedFavorites && <Link to={`/list/${id}`} className='link-page__movies-watch-button'>Watch now</Link>}
+                    }} className="favorites__save-button">{buttonText}</button>
+                {!notClickedFavorites && <Link to={`/list/${id}`} className='favorites__watch-button'>Watch now</Link>}
                 </>
                 }                
                 </div>

@@ -1,23 +1,31 @@
-.list-page__container{
+.favorites-container{
     background: #313131;
     height: min-content;
     border-radius: 20px;
     padding:40px;
-    min-width: 300px;
+    width: 800px;
 }   
 
-.list-page__header{
-    color:white;
-}
-
-.list-page__movies-container{
+.favorites__movies-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap:30px;
     font-family: "Ubuntu Sans", sans-serif;
 }
-.list-page__movies{
+
+.favorites__header{
+    color:white;
+}
+
+.favorites__empty-text{
+    color:white;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+
+.favorites__movies{
     display: flex;
     flex-wrap: wrap;
     grid-template-columns:  auto auto auto auto;
@@ -26,20 +34,7 @@
 
 }
 
-.list-page__button{
-    padding:10px 40px;
-    background:rgb(255, 238, 0);
-    border: none;
-    border-radius: 12px;
-    font-weight: 700;
-}
-
-.list-page__button:hover{
-    background: rgb(255, 246, 120);
-}
-
-
-.list-page__movies-item{
+.favorites__movies-item{
     display: flex;
     width: min-content;
     text-align: center;
@@ -51,12 +46,6 @@
     width: 75px;
     height: 111.5px;
     margin-bottom: -2px;
-}
-
-.list-page__empty{
-    color:white;
-    font-weight: 400;
-    font-size: 15px;
 }
 
 .movies-item__title{
@@ -81,7 +70,20 @@
     background: rgb(255, 67, 67);
 }
 
-.link-page__movies-watch-button{
+.favorites__save-button{
+    padding:10px 40px;
+    background:rgb(255, 238, 0);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.favorites__save-button:hover{
+    background: rgb(255, 246, 120);
+}
+
+
+.favorites__watch-button{
     text-decoration: none;
     color:white;
     width: 135px;
@@ -93,30 +95,30 @@
     font-weight: 700;
 }
 
-.link-page__movies-watch-button:hover{
+.favorites__watch-button:hover{
     background: rgb(84, 164, 255);
 }
 
 @media screen and (max-width:990px) {
-    .list-page__container{
+    .favorites-container{
         min-width: min-content;
     }  
 }
 
 @media screen and (max-width:700px){
-    .list-page__header{
+    .favorites__header{
         font-size: 15px;
     }
 
-    .list-page__container{
+    .favorites-container{
         padding:30px;
     }
     
-    .list-page__empty{
+    .favorites__empty-text{
         font-size: 10px;
     }
 
-    .list-page__button{
+    .favorites__save-button{
         padding:5px 15px;
     }
 
@@ -124,11 +126,11 @@
         font-size: 10px;
     }
 
-    .list-page__movies-container{
+    .favorites__movies-container{
         gap:15px;
     }
 
-    .list-page__movies{
+    .favorites__movies{
         gap:10px;
     }
 
@@ -137,7 +139,7 @@
         font-size: 10px;
     }
 
-    .link-page__movies-watch-button{
+    .favorites__watch-button{
         padding:5px 15px;
         width: min-content;
     }
