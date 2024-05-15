@@ -16,6 +16,7 @@
 .list-page__item-poster{
     width: 300px;
     height: 446px;
+    border-radius: 20px;
 }
 
 .list-page__item{

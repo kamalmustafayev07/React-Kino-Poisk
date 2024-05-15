@@ -17,10 +17,13 @@
     top:0px;
     background:rgb(255, 238, 0);
     padding:10px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 .movies__item-poster__image{
-    width: 300px;
-    height: 446px;
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
 }
 
 .movies__item-title{
